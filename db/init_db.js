@@ -90,9 +90,9 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    // await dropTables();
-    // await createTables();
-    const sites = await getAllSites();
+    await dropTables();
+    await createTables();
+    // const sites = await getAllSites();
     // console.log(sites);
   } catch (error) {
     console.error(error);
