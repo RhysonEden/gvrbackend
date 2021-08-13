@@ -9,6 +9,7 @@ const {
   getAllUsers,
 } = require("../db");
 const SALT_COUNT = 10;
+const { JWT_SECRET } = process.env;
 
 usersRouter.get("/", async (req, res, next) => {
   try {

@@ -2,16 +2,16 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "techapp";
 
-const client = new Client(
-  `postgressql://postgres:james@localhost:5432/${DB_NAME}`
-);
+// const client = new Client(
+//   `postgressql://postgres:james@localhost:5432/${DB_NAME}`
+// );
 
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 async function createUser({ username, password, email }) {
   try {
@@ -56,7 +56,11 @@ async function getUser({ username, password }) {
     const user = await getUserByUsername(username);
     if (!user) return;
     const matchingPassword = await bcrypt.compareSync(password, user.password);
-    if (!matchingPassword) return;
+    if (!matchingPassword) {
+      console.log("error");
+      return;
+    }
+    console.log(user);
     return user;
   } catch (error) {
     throw error;
@@ -112,7 +116,7 @@ async function getAllSites() {
 
 async function searchGvrIds(gvrId) {
   try {
-    console.log("Searching For Part #", gvrId);
+    console.log("Searching For GVR #", gvrId);
     const { rows } = await client.query(`
     SELECT *
     FROM sites

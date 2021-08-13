@@ -1,4 +1,5 @@
 const apiRouter = require("express").Router();
+require("dotenv").config();
 
 apiRouter.get("/", (req, res, next) => {
   res.send({
@@ -8,5 +9,8 @@ apiRouter.get("/", (req, res, next) => {
 
 const gvrRouter = require("./gvrs");
 apiRouter.use("/gvrs", gvrRouter);
+
+const usersRouter = require("./users");
+apiRouter.use("/users", usersRouter);
 
 module.exports = apiRouter;

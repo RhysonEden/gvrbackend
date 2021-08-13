@@ -1,8 +1,9 @@
 import axios from "axios";
 
-export async function getSomething() {
+export async function getGVR(id) {
   try {
-    const { data } = await axios.get("/api/users");
+    const { data } = await axios.get(`/api/gvrs/${id}`);
+    console.log(data);
     return data;
   } catch (error) {
     throw error;
@@ -23,7 +24,11 @@ export async function loginUser(username, password) {
       "email",
       "guardianresourcecenter@guardianfueltech.com"
     );
-    return data;
+    if (!data) {
+      console.log("error");
+    } else {
+      return data;
+    }
   } catch (error) {
     throw error;
   }

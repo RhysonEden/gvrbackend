@@ -3,7 +3,7 @@ import { loginUser } from "../api/index";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useHistory } from "react-router-dom";
-
+import "./phone.css";
 function Login({ main, setMain }) {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -31,6 +31,7 @@ function Login({ main, setMain }) {
     e.preventDefault();
     try {
       await loginUser(users, pword).then((resp) => {
+        console.log(resp);
         if (!resp) {
           alert.show("Invalid Username or Password");
         } else {
