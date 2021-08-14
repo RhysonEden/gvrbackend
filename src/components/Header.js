@@ -2,6 +2,7 @@ import React from "react";
 import { getGVR } from "../api";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
+import icon180 from "../icon180.png";
 const Header = ({ searchInput, setSearchInput, setMessage, setWarning }) => {
   const history = useHistory();
   const alert = useAlert();
@@ -40,6 +41,7 @@ const Header = ({ searchInput, setSearchInput, setMessage, setWarning }) => {
     <>
       <div className="header">
         <div className="hundred">
+          <img src={icon180} className="photo" />
           <input
             className="searchmobil"
             type="text"

@@ -56,6 +56,7 @@
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   }
 
   .pagetwo {
@@ -95,17 +96,22 @@
     margin: 1em;
   }
   .hundred {
+    display: flex;
+    background-color: white;
+    margin-top: -10px;
     width: 100%;
     align-items: center;
     justify-content: center;
   }
   .searchmobil {
     border: 1px solid black;
+    /* margin-top: 5px; */
+    height: 40px;
     width: 75%;
     align-self: center;
     align-items: center;
     justify-content: center;
-    margin-left: 3em;
+    margin-left: 1em;
   }
   .headerbutton {
     display: flex;
@@ -113,6 +119,12 @@
     justify-content: space-evenly;
     position: sticky;
     top: -10;
+  }
+
+  .photo {
+    /* margin-top: 5px; */
+    height: 10%;
+    width: 10%;
   }
 
   .card {
@@ -143,6 +155,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #03e8fc;
+    box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5);
   }
 
   .phone {
