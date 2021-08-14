@@ -10,14 +10,9 @@ const Header = ({ searchInput, setSearchInput, setMessage, setWarning }) => {
     setSearchInput(e.target.value);
   };
 
-  function badEmptyCheck(value) {
-    console.log(Object.keys(value));
-    if (Object.keys(value).length == 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  const goHomeYouAreDrunk = () => {
+    window.location.reload();
+  };
 
   const handleSubmit = (e) => {
     if (searchInput.length === 0) {
@@ -57,6 +52,9 @@ const Header = ({ searchInput, setSearchInput, setMessage, setWarning }) => {
         </div>
         <div className="headerbutton">
           <button onClick={clearSubmit}>Clear</button>
+        </div>
+        <div className="headerbutton">
+          <button onClick={goHomeYouAreDrunk}>Home</button>
         </div>
       </div>
       {/* <div className="headerbutton">
