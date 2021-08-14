@@ -1,33 +1,52 @@
 import React from "react";
 import { getGVR } from "../api";
+import { useHistory } from "react-router-dom";
 
 const Header = ({ searchInput, setSearchInput, setMessage }) => {
+  const history = useHistory();
+
   const handleTextChange = (e) => {
     console.log(e.target.value);
     setSearchInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    getGVR(searchInput).then((resp) => {
-      console.log(resp, "response");
-      setMessage(resp.gvr);
-    });
+    if (searchInput.length === 0) {
+      return;
+    } else {
+      getGVR(searchInput).then((resp) => {
+        console.log(resp, "response");
+        setMessage(resp.gvr);
+        history.push("/home");
+      });
+    }
+  };
+
+  const clearSubmit = () => {
+    window.location.reload();
   };
   return (
     <>
       <div className="header">
-        <input
-          className="searchmobil"
-          type="text"
-          placeholder="Search By GVR ID"
-          value={searchInput}
-          onChange={handleTextChange}
-        />
-        {/* <button>Submit</button> */}
+        <div className="hundred">
+          <input
+            className="searchmobil"
+            type="text"
+            placeholder="Search By GVR ID"
+            value={searchInput}
+            onChange={handleTextChange}
+          />
+        </div>
+        <div className="headerbutton">
+          <button onClick={handleSubmit}>Submit</button>
+        </div>
+        <div className="headerbutton">
+          <button onClick={clearSubmit}>Clear</button>
+        </div>
       </div>
-      <div className="headerbutton">
+      {/* <div className="headerbutton">
         <button onClick={handleSubmit}>Submit</button>
-      </div>
+      </div> */}
     </>
   );
 };

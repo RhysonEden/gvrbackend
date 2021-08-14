@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import HomeScreen from "../screens/HomeScreen";
 import Login from "./Login";
+import Footer from "./Footer";
+import GuideScreen from "../screens/GuideScreen";
 import { BrowserRouter as Brouter, Switch } from "react-router-dom";
 import "./phone.css";
 const App = () => {
@@ -20,12 +22,24 @@ const App = () => {
   } else {
     return (
       <Brouter>
-        <Header
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          setMessage={setMessage}
-        />
-        <HomeScreen message={message} setMessage={setMessage} />
+        <div className="appbody">
+          <Header
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            setMessage={setMessage}
+          />
+          <Switch>
+            <HomeScreen
+              path="/home"
+              exact
+              component={HomeScreen}
+              message={message}
+              setMessage={setMessage}
+            />
+            <GuideScreen path="/guide" exact component={HomeScreen} />
+          </Switch>
+          <Footer />
+        </div>
       </Brouter>
     );
   }

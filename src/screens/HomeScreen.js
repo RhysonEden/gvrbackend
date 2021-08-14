@@ -1,9 +1,6 @@
 import React from "react";
 
 const HomeScreen = ({ message, setMessage }) => {
-  const clearSubmit = () => {
-    window.location.reload();
-  };
   if (message.length == 0) {
     return <></>;
   } else {
@@ -19,9 +16,6 @@ const HomeScreen = ({ message, setMessage }) => {
             )}
           </div>
         ))}
-        <div className="headerbutton">
-          <button onClick={clearSubmit}>Clear</button>
-        </div>
       </div>
     );
   }
