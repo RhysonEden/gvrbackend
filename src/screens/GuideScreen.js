@@ -9,7 +9,7 @@ const GuideScreen = () => {
   };
   const netGuide = () => {
     window.open(
-      "https:drive.google.com/file/d/1z3EFoIjVx26gHbCdz9kDZnQRqhYl7jSb/view?usp=sharing",
+      "https:drive.google.com/file/d/1z3EFoIjVx26gHbCdz9kDZnQRqhYl7jSb/view",
       "_blank"
     );
   };
