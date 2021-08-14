@@ -55,6 +55,8 @@ usersRouter.post("/login", async (req, res, next) => {
         name: "WrongUserNameOrPassword",
         message: "Username or password is incorrect",
       });
+    } else if (user === 500) {
+      res.send({ message: "error" });
     } else {
       const token = jwt.sign(
         { id: user.id, username: user.username },
@@ -64,6 +66,9 @@ usersRouter.post("/login", async (req, res, next) => {
       res.send({ message: "you're logged in!", token, user });
     }
   } catch (error) {
+    // if (error.response.status === 500) {
+    //   res.send({ message: "Error 500" });
+    // }
     console.log(error);
     next(error);
   }

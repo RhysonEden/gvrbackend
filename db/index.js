@@ -58,11 +58,12 @@ async function getUser({ username, password }) {
     if (!user) return;
     const matchingPassword = await bcrypt.compareSync(password, user.password);
     if (!matchingPassword) {
-      console.log("error");
-      return;
+      let user = 500;
+      console.log(user);
+      return user;
+    } else {
+      return user;
     }
-    console.log(user);
-    return user;
   } catch (error) {
     throw error;
   }

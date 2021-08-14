@@ -13,6 +13,8 @@ const Header = ({ searchInput, setSearchInput, setMessage }) => {
   const handleSubmit = (e) => {
     if (searchInput.length === 0) {
       return;
+    } else if (searchInput.length >= 7) {
+      console.log("Wrong");
     } else {
       getGVR(searchInput).then((resp) => {
         console.log(resp, "response");

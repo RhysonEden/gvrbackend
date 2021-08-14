@@ -31,8 +31,7 @@ function Login({ main, setMain }) {
     e.preventDefault();
     try {
       await loginUser(users, pword).then((resp) => {
-        console.log(resp);
-        if (!resp) {
+        if (resp.mess === 500) {
           alert.show("Invalid Username or Password");
         } else {
           // alert.show("Login Successfull");
