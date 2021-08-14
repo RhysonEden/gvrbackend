@@ -11,20 +11,20 @@ const {
 const SALT_COUNT = 10;
 const { JWT_SECRET } = process.env;
 
-usersRouter.get("/", async (req, res, next) => {
-  try {
-    console.log(test);
-    const users = await getUserByUsername(james);
-    console.log(users);
-    // getAllUsers();
-    res.send({
-      message: "Users is under construction!",
-    });
-    // res.send({ users });
-  } catch ({ name, message }) {
-    next({ name, message });
-  }
-});
+// usersRouter.get("/", async (req, res, next) => {
+//   try {
+//     console.log(test);
+//     const users = await getUserByUsername(james);
+//     console.log(users);
+//     // getAllUsers();
+//     res.send({
+//       message: "Users is under construction!",
+//     });
+//     // res.send({ users });
+//   } catch ({ name, message }) {
+//     next({ name, message });
+//   }
+// });
 
 usersRouter.get("/getUserInfo", async (req, res, next) => {
   try {

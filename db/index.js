@@ -48,6 +48,7 @@ async function getUserByUsername(userName) {
 }
 
 async function getUser({ username, password }) {
+  console.log("User ", username, " is logging in");
   if (!username || !password) {
     return;
   }
