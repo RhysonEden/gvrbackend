@@ -112,6 +112,7 @@
     align-items: center;
     justify-content: center;
     margin-left: 1em;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   }
   .headerbutton {
     display: flex;
@@ -159,10 +160,9 @@
   }
 
   .phone {
-    width: 25%;
     border: 1px solid black;
     width: 29%;
-    height: 8em;
+    height: 6em;
     font-size: 15px;
     flex-wrap: wrap;
     margin-left: 6%;
@@ -177,7 +177,7 @@
   .book {
     border: 1px solid black;
     width: 29%;
-    height: 8em;
+    height: 6em;
     font-size: 15px;
     margin-left: -10%;
     margin-right: -10%;
@@ -192,7 +192,7 @@
   .email {
     border: 1px solid black;
     width: 29%;
-    height: 8em;
+    height: 6em;
     font-size: 15px;
     /* margin-right: 10%; */
     margin-bottom: 2em;
