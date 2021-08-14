@@ -29,13 +29,8 @@ export async function loginUser(username, password) {
         "guardianresourcecenter@guardianfueltech.com"
       );
       return data;
-      console.log("Bad things happened");
     }
   } catch (error) {
     throw error;
   }
-}
-
-function badEmptyCheck(value) {
-  return Object.keys(value).length === 0;
 }

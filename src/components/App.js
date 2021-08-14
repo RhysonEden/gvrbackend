@@ -9,6 +9,9 @@ import "./phone.css";
 const App = () => {
   const [message, setMessage] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [warning, setWarning] = useState(
+    "Please Search Above or Contact Guardian Connect for Assitance"
+  );
   let user = sessionStorage.getItem("user");
 
   if (!user) {
@@ -27,6 +30,7 @@ const App = () => {
             searchInput={searchInput}
             setSearchInput={setSearchInput}
             setMessage={setMessage}
+            setWarning={setWarning}
           />
           <Switch>
             <HomeScreen
@@ -35,6 +39,7 @@ const App = () => {
               component={HomeScreen}
               message={message}
               setMessage={setMessage}
+              warning={warning}
             />
             <GuideScreen path="/guide" exact component={HomeScreen} />
           </Switch>

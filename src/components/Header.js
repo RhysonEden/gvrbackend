@@ -1,14 +1,23 @@
 import React from "react";
 import { getGVR } from "../api";
 import { useHistory } from "react-router-dom";
-
-const Header = ({ searchInput, setSearchInput, setMessage }) => {
+import { useAlert } from "react-alert";
+const Header = ({ searchInput, setSearchInput, setMessage, setWarning }) => {
   const history = useHistory();
-
+  const alert = useAlert();
   const handleTextChange = (e) => {
     console.log(e.target.value);
     setSearchInput(e.target.value);
   };
+
+  function badEmptyCheck(value) {
+    console.log(Object.keys(value));
+    if (Object.keys(value).length == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const handleSubmit = (e) => {
     if (searchInput.length === 0) {
@@ -17,9 +26,13 @@ const Header = ({ searchInput, setSearchInput, setMessage }) => {
       console.log("Wrong");
     } else {
       getGVR(searchInput).then((resp) => {
-        console.log(resp, "response");
-        setMessage(resp.gvr);
-        history.push("/home");
+        console.log(resp.gvr.length, "response");
+        if (resp.gvr.length === 0) {
+          setWarning("Nothing Found, Please Check the GVR ID and Try Again.");
+        } else {
+          setMessage(resp.gvr);
+          history.push("/home");
+        }
       });
     }
   };

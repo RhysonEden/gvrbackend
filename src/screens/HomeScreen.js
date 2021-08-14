@@ -1,8 +1,8 @@
 import React from "react";
 
-const HomeScreen = ({ message, setMessage }) => {
+const HomeScreen = ({ message, setMessage, warning }) => {
   if (message.length == 0) {
-    return <></>;
+    return <div className="yellowcard">{warning}</div>;
   } else {
     return (
       <div className="cardmaster">
