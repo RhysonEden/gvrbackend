@@ -11,6 +11,7 @@ const Header = ({ searchInput, setSearchInput, setMessage, setWarning }) => {
   };
 
   const goHomeYouAreDrunk = () => {
+    history.push("/home");
     window.location.reload();
   };
 
