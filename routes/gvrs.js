@@ -18,6 +18,8 @@ gvrRouter.get("/", async (req, res, next) => {
 
 gvrRouter.get("/:id", async (req, res, next) => {
   const gvrId = req.params.id;
+  console.log("GVR IDDDDDDDDDD", gvrId);
+  // console.log(req, "maybe?");
   try {
     const gvr = await searchGvrIds(gvrId);
     res.send({ gvr });

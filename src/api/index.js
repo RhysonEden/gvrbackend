@@ -1,8 +1,20 @@
 import axios from "axios";
+let token = sessionStorage.getItem("token");
+const config = {
+  headers: { Authorization: `Bearer ${token}` },
+};
 
 export async function getGVR(id) {
+  let head = config;
+  if (!head) {
+    let head = "Not Valid";
+    return head;
+  }
   try {
-    const { data } = await axios.get(`/api/gvrs/${id}`);
+    let url = "api/gvrs/" + id;
+
+    const { data } = await axios.get(url, head);
+
     console.log(data);
     return data;
   } catch (error) {

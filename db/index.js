@@ -127,6 +127,7 @@ async function searchGvrIds(gvrId) {
     FROM sites
     WHERE gvrid LIKE '%${gvrId}%'
     `);
+    console.log(rows);
     return rows;
   } catch (error) {
     throw error;
