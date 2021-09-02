@@ -8,23 +8,34 @@ const {
   getUsersByID,
   getAllUsers,
   getUserByUsername,
+  getAllPets,
   client,
 } = require("./index");
 
 async function createTables() {
   try {
     await client.query(`
-                CREATE TABLE users (
+                CREATE TABLE pets (
           id SERIAL PRIMARY KEY,
-          username varchar UNIQUE NOT NULL,
-          password varchar NOT NULL,
-          email varchar NOT NULL
+          dname varchar UNIQUE NOT NULL,
+          breed varchar NOT NULL,
+          dphoto varchar NOT NULL,
+          age varchar NOT NULL,
+          oname varchar NOT NULL,
+          service varchar NOT NULL
         );
       `);
   } catch (error) {
     throw error;
   }
 }
+
+//         CREATE TABLE users (
+//   id SERIAL PRIMARY KEY,
+//   username varchar UNIQUE NOT NULL,
+//   password varchar NOT NULL,
+//   email varchar NOT NULL
+// );
 
 // CREATE TABLE sites (
 //   id SERIAL PRIMARY KEY,
@@ -36,7 +47,7 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
-      DROP TABLE IF EXISTS users;
+      DROP TABLE IF EXISTS pets;
       `);
 
     console.log("Finished dropping tables!");
@@ -132,24 +143,26 @@ async function testDB() {
   try {
     await dropTables();
     await createTables();
-    await createInitialUsers();
-    const userNels = await getUserByUsername("nels");
-    const userJames = await getUserByUsername("james");
-    const userScott = await getUserByUsername("scott");
-    const userAmber = await getUserByUsername("amber");
-    const userJosh = await getUserByUsername("josh");
-    const users = await getAllUsers();
-    const user1 = await getUsersByID(1);
-    console.log(
-      "username",
-      userNels,
-      userJames,
-      userScott,
-      userAmber,
-      userJosh
-    );
-    console.log("All users", users);
-    console.log("User #1", user1);
+    const pets = await getAllPets();
+    // await createInitialUsers();
+    // const userNels = await getUserByUsername("nels");
+    // const userJames = await getUserByUsername("james");
+    // const userScott = await getUserByUsername("scott");
+    // const userAmber = await getUserByUsername("amber");
+    // const userJosh = await getUserByUsername("josh");
+    // const users = await getAllUsers();
+    // const user1 = await getUsersByID(1);
+    // console.log(
+    //   "username",
+    //   userNels,
+    //   userJames,
+    //   userScott,
+    //   userAmber,
+    //   userJosh
+    // );
+    // console.log("All users", users);
+    // console.log("User #1", user1);
+    console.log(pets);
   } catch (error) {
     console.error(error);
   } finally {
