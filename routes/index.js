@@ -32,6 +32,9 @@ apiRouter.use(async (req, res, next) => {
 const gvrRouter = require("./gvrs");
 apiRouter.use("/gvrs", gvrRouter);
 
+const petRouter = require("./pets");
+apiRouter.use("/pets", petRouter);
+
 const usersRouter = require("./users");
 apiRouter.use("/users", usersRouter);
 

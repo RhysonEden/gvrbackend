@@ -9,6 +9,7 @@ const {
   getAllUsers,
   getUserByUsername,
   getAllPets,
+  searchPetIds,
   client,
 } = require("./index");
 
@@ -141,8 +142,8 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    await dropTables();
-    await createTables();
+    // await dropTables();
+    // await createTables();
     const pets = await getAllPets();
     // await createInitialUsers();
     // const userNels = await getUserByUsername("nels");
@@ -162,7 +163,9 @@ async function testDB() {
     // );
     // console.log("All users", users);
     // console.log("User #1", user1);
+    const petSearch = await searchPetIds(3);
     console.log(pets);
+    console.log(petSearch);
   } catch (error) {
     console.error(error);
   } finally {

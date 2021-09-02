@@ -134,6 +134,21 @@ async function getAllPets() {
   }
 }
 
+async function searchPetIds(id) {
+  try {
+    console.log("Searching For GVR #", id);
+    const { rows } = await client.query(`
+    SELECT *
+    FROM pets
+    WHERE id ='${id}'
+    `);
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function searchGvrIds(gvrId) {
   try {
     console.log("Searching For GVR #", gvrId);
@@ -158,5 +173,6 @@ module.exports = {
   getAllUsers,
   getUserByUsername,
   getAllPets,
+  searchPetIds,
   client,
 };
