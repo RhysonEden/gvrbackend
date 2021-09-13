@@ -16,14 +16,17 @@ const {
 async function createTables() {
   try {
     await client.query(`
-                CREATE TABLE pets (
+                CREATE TABLE codesthree (
           id SERIAL PRIMARY KEY,
-          dname varchar UNIQUE NOT NULL,
-          breed varchar NOT NULL,
-          dphoto varchar NOT NULL,
-          age varchar NOT NULL,
-          oname varchar NOT NULL,
-          service varchar NOT NULL
+           code varchar UNIQUE NOT NULL,
+          descr varchar NOT NULL,
+          type varchar NOT NULL
+        );
+                        CREATE TABLE codesfive (
+          id SERIAL PRIMARY KEY,
+           code varchar UNIQUE NOT NULL,
+          descr varchar NOT NULL,
+          type varchar NOT NULL
         );
       `);
   } catch (error) {
@@ -44,11 +47,22 @@ async function createTables() {
 //   prov boolean
 // );
 
+//         CREATE TABLE pets (
+//   id SERIAL PRIMARY KEY,
+//   dname varchar UNIQUE NOT NULL,
+//   breed varchar NOT NULL,
+//   dphoto varchar NOT NULL,
+//   age varchar NOT NULL,
+//   oname varchar NOT NULL,
+//   service varchar NOT NULL
+// );
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
-      DROP TABLE IF EXISTS pets;
+      DROP TABLE IF EXISTS codesthree;
+            DROP TABLE IF EXISTS codesfive;
+
       `);
 
     console.log("Finished dropping tables!");
@@ -142,9 +156,9 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    // await dropTables();
-    // await createTables();
-    const pets = await getAllPets();
+    await dropTables();
+    await createTables();
+    // const pets = await getAllPets();
     // await createInitialUsers();
     // const userNels = await getUserByUsername("nels");
     // const userJames = await getUserByUsername("james");
@@ -163,9 +177,9 @@ async function testDB() {
     // );
     // console.log("All users", users);
     // console.log("User #1", user1);
-    const petSearch = await searchPetIds(3);
-    console.log(pets);
-    console.log(petSearch);
+    // const petSearch = await searchPetIds(3);
+    // console.log(pets);
+    // console.log(petSearch);
   } catch (error) {
     console.error(error);
   } finally {

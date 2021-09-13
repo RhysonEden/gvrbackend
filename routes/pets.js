@@ -5,6 +5,15 @@ const bcrypt = require("bcrypt");
 const { searchPetIds, getAllPets } = require("../db");
 const SALT_COUNT = 10;
 
+// petRouter.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "https://yoursite.com");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
 petRouter.get("/pets", async (req, res, next) => {
   try {
     const allGvrs = await getAllPets();

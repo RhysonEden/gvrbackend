@@ -35,6 +35,9 @@ apiRouter.use("/gvrs", gvrRouter);
 const petRouter = require("./pets");
 apiRouter.use("/pets", petRouter);
 
+const codesRouter = require("./codes");
+apiRouter.use("/codes", codesRouter);
+
 const usersRouter = require("./users");
 apiRouter.use("/users", usersRouter);
 

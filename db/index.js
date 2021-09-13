@@ -2,16 +2,16 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "techapp";
 
-// const client = new Client(
-//   `postgressql://postgres:james@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  `postgressql://postgres:james@localhost:5432/${DB_NAME}`
+);
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function createUser({ username, password, email }) {
   try {
@@ -149,6 +149,36 @@ async function searchPetIds(id) {
   }
 }
 
+async function searchCodesThree(code) {
+  try {
+    console.log("Searching For GVR #", code);
+    const { rows } = await client.query(`
+    SELECT *
+    FROM codesthree
+    WHERE code ='${code}'
+    `);
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function searchCodesFive(code) {
+  try {
+    console.log("Searching For GVR #", code);
+    const { rows } = await client.query(`
+    SELECT *
+    FROM codesfive
+    WHERE code ='${code}'
+    `);
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function searchGvrIds(gvrId) {
   try {
     console.log("Searching For GVR #", gvrId);
@@ -174,5 +204,7 @@ module.exports = {
   getUserByUsername,
   getAllPets,
   searchPetIds,
+  searchCodesFive,
+  searchCodesThree,
   client,
 };

@@ -16,16 +16,16 @@ gvrRouter.get("/", async (req, res, next) => {
   }
 });
 
-gvrRouter.get("/pets", async (req, res, next) => {
-  try {
-    const allGvrs = await getAllPets();
-    // getAllUsers();
+// gvrRouter.get("/pets", async (req, res, next) => {
+//   try {
+//     const allGvrs = await getAllPets();
+//     // getAllUsers();
 
-    res.send({ allGvrs });
-  } catch ({ name, message }) {
-    next({ name, message });
-  }
-});
+//     res.send({ allGvrs });
+//   } catch ({ name, message }) {
+//     next({ name, message });
+//   }
+// });
 
 gvrRouter.get("/:id", async (req, res, next) => {
   const gvrId = req.params.id;
