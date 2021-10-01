@@ -6,11 +6,13 @@ import Footer from "./Footer";
 import GuideScreen from "../screens/GuideScreen";
 import { BrowserRouter as Brouter, Switch } from "react-router-dom";
 import "./phone.css";
+import Codes from "../screens/Codes";
 const App = () => {
   const [message, setMessage] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [value, setValue] = useState("");
   const [warning, setWarning] = useState(
-    "Please Search Above or Contact Guardian Connect for Assitance"
+    "Please Search the GVR ID Above or Contact Guardian Connect for Assitance"
   );
   let user = sessionStorage.getItem("user");
 
@@ -31,10 +33,20 @@ const App = () => {
             setSearchInput={setSearchInput}
             setMessage={setMessage}
             setWarning={setWarning}
+            value={value}
           />
           <Switch>
+            <Codes
+              path="/codes"
+              exact
+              component={Codes}
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              message={message}
+              setValue={setValue}
+            />
             <HomeScreen
-              path="/home"
+              path="/"
               exact
               component={HomeScreen}
               message={message}

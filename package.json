@@ -27,7 +27,8 @@
     "react-alert-template-basic": "^1.0.2",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "react-select": "^5.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

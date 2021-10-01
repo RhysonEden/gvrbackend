@@ -46,3 +46,46 @@ export async function loginUser(username, password) {
     throw error;
   }
 }
+
+export async function fetchThree(code) {
+  // let code = 20;
+  try {
+    const { data } = await axios.get(`/api/codes/three/${code}`);
+
+    let Id = data.gvr;
+    let IdLength = data.gvr.length;
+    if (IdLength === 0) {
+      let Id = "Nothing Found, Please Try Again";
+      return Id;
+    } else {
+      let codeResponse = Id.map((el) => {
+        let resp = el.descr.toString();
+        return resp;
+      });
+      return codeResponse[0];
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchFive(code) {
+  try {
+    const { data } = await axios.get(`/api/codes/five/${code}`);
+    console.log(data);
+    let Id = data.gvr;
+    let IdLength = data.gvr.length;
+    if (IdLength === 0) {
+      let Id = "Nothing Found, Please Try Again";
+      return Id;
+    } else {
+      let codeResponse = Id.map((el) => {
+        let resp = el.descr.toString();
+        return resp;
+      });
+      return codeResponse[0];
+    }
+  } catch (error) {
+    throw error;
+  }
+}

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const HomeScreen = ({ message, setMessage, warning }) => {
+  useEffect(() => {
+    sessionStorage.setItem("searchbar", "true");
+  }, []);
+
   if (message.length == 0) {
     return <div className="yellowcard">{warning}</div>;
   } else {

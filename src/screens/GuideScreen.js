@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const GuideScreen = () => {
+  useEffect(() => {
+    sessionStorage.setItem("searchbar", "true");
+  }, []);
   const mde = () => {
     window.open(
       "https://drive.google.com/file/d/1GHFLPiND2ggRGleALID1eZXy_oSYhOMu/view",
