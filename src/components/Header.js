@@ -52,7 +52,7 @@ const Header = ({
       });
     } else if (disp === "300") {
       fetchThree(searchInput).then((resp) => {
-        console.log(resp);
+        setMessage(resp);
       });
     } else {
       setMessage("Invalid Dispenser Type");
