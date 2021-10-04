@@ -89,3 +89,52 @@ export async function fetchFive(code) {
     throw error;
   }
 }
+
+export async function registerUser(username, password, email) {
+  try {
+    const { data } = await axios.post("/api/users/register", {
+      username,
+      password,
+      email,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAdminInfo(username) {
+  try {
+    const data = await axios.get(`/api/users/${username}`, {
+      username,
+    });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function userUpdate(username, password) {
+  try {
+    const { data } = await axios.post("api/users/update", {
+      username,
+      password,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function adminUpdate(username, admin) {
+  try {
+    const { data } = await axios.post("api/users/admin", {
+      username,
+      admin,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

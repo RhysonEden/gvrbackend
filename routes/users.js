@@ -7,6 +7,7 @@ const {
   getUserByUsername,
   getUser,
   getAllUsers,
+  getAdminByUsername,
 } = require("../db");
 const SALT_COUNT = 10;
 const { JWT_SECRET } = process.env;
@@ -71,6 +72,16 @@ usersRouter.post("/login", async (req, res, next) => {
     // }
     console.log(error);
     next(error);
+  }
+});
+
+usersRouter.get("/:id", async (req, res, next) => {
+  const admin = req.params.id;
+  try {
+    const name = await getAdminByUsername(admin);
+    res.send({ name });
+  } catch ({ name, message }) {
+    next({ name, message });
   }
 });
 

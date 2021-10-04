@@ -13,14 +13,14 @@ const client = new Client({
   },
 });
 
-async function createUser({ username, password, email }) {
+async function createUser({ username, password, email, admin }) {
   try {
     const result = await client.query(
       `
-      INSERT INTO users(username, password, email)
-      VALUES ($1, $2, $3);
+      INSERT INTO users(username, password, email, admin)
+      VALUES ($1, $2, $3, $4);
     `,
-      [username, password, email]
+      [username, password, email, admin]
     );
 
     return result;
@@ -119,6 +119,32 @@ async function getAllSites() {
   }
 }
 
+async function getAdminByUsername(username) {
+  try {
+    let end;
+    const { rows } = await client.query(
+      `
+      SELECT admin 
+      FROM users 
+      WHERE username=$1
+    `,
+      [username]
+    );
+    Object.values(rows).forEach((key) => {
+      console.log(key.admin);
+      if (key.admin === "true") {
+        return (end = true);
+      } else {
+        return (end = false);
+      }
+    });
+    console.log(end);
+    return end;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getAllPets() {
   try {
     console.log("Trying");
@@ -206,5 +232,6 @@ module.exports = {
   searchPetIds,
   searchCodesFive,
   searchCodesThree,
+  getAdminByUsername,
   client,
 };

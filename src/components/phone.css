@@ -17,7 +17,6 @@
   }
   html,
   body {
-    /* IE 10-11 didn't like using min-height */
     height: 100%;
   }
   body {
@@ -41,6 +40,26 @@
   }
   .appbody {
     flex: 1 0 auto;
+  }
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-input {
+    width: 90%;
+    margin-top: 1em;
+    /* margin-bottom: 1em; */
+  }
+  .create {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    border: 1px solid black;
+    justify-content: center;
+    align-self: center;
+    width: 90%;
   }
   .header {
     display: flex;

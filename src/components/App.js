@@ -7,6 +7,7 @@ import GuideScreen from "../screens/GuideScreen";
 import { BrowserRouter as Brouter, Switch } from "react-router-dom";
 import "./phone.css";
 import Codes from "../screens/Codes";
+import Register from "../screens/Register";
 const App = () => {
   const [message, setMessage] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -54,6 +55,7 @@ const App = () => {
               warning={warning}
             />
             <GuideScreen path="/guide" exact component={HomeScreen} />
+            <Register path="/regi" exact component={Register} />
           </Switch>
           <Footer />
         </div>

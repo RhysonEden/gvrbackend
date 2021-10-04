@@ -16,18 +16,13 @@ const {
 async function createTables() {
   try {
     await client.query(`
-                CREATE TABLE codesthree (
-          id SERIAL PRIMARY KEY,
-           code varchar UNIQUE NOT NULL,
-          descr varchar NOT NULL,
-          type varchar NOT NULL
-        );
-                        CREATE TABLE codesfive (
-          id SERIAL PRIMARY KEY,
-           code varchar UNIQUE NOT NULL,
-          descr varchar NOT NULL,
-          type varchar NOT NULL
-        );
+              CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username varchar UNIQUE NOT NULL,
+  password varchar NOT NULL,
+  email varchar NOT NULL,
+  admin varchar NOT NULL
+);
       `);
   } catch (error) {
     throw error;
@@ -60,9 +55,7 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
-      DROP TABLE IF EXISTS codesthree;
-            DROP TABLE IF EXISTS codesfive;
-
+      DROP TABLE IF EXISTS users;
       `);
 
     console.log("Finished dropping tables!");
@@ -82,6 +75,7 @@ async function createInitialUsers() {
           username: "nels",
           password: hashedPassword,
           email: "test1@yahoo.com",
+          admin: true,
         });
         resolve();
         console.log("Completed");
@@ -95,6 +89,7 @@ async function createInitialUsers() {
           username: "james",
           password: hashedPassword,
           email: "test2@yahoo.com",
+          admin: true,
         });
         resolve();
         console.log("Completed");
@@ -108,6 +103,7 @@ async function createInitialUsers() {
           username: "scott",
           password: hashedPassword,
           email: "test3@yahoo.com",
+          admin: false,
         });
         resolve();
         console.log("Completed");
@@ -120,6 +116,7 @@ async function createInitialUsers() {
           username: "josh",
           password: hashedPassword,
           email: "test3@yahoo.com",
+          admin: true,
         });
         resolve();
         console.log("Completed");
@@ -132,6 +129,7 @@ async function createInitialUsers() {
           username: "amber",
           password: hashedPassword,
           email: "test3@yahoo.com",
+          admin: true,
         });
         resolve();
         console.log("Completed");
@@ -159,7 +157,7 @@ async function testDB() {
     await dropTables();
     await createTables();
     // const pets = await getAllPets();
-    // await createInitialUsers();
+    await createInitialUsers();
     // const userNels = await getUserByUsername("nels");
     // const userJames = await getUserByUsername("james");
     // const userScott = await getUserByUsername("scott");
