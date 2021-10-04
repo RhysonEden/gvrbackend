@@ -87,7 +87,7 @@ usersRouter.get("/:id", async (req, res, next) => {
 
 usersRouter.post("/register", async (req, res, next) => {
   try {
-    const { username, password, email } = req.body;
+    const { username, password, email, admin } = req.body;
     const queriedUser = await getUserByUsername(username);
     if (queriedUser) {
       next({
@@ -105,7 +105,7 @@ usersRouter.post("/register", async (req, res, next) => {
           username,
           password: hashedPassword,
           email,
-          seller: false,
+          admin,
         });
         if (err) {
           next(err);

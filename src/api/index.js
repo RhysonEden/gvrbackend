@@ -91,11 +91,13 @@ export async function fetchFive(code) {
 }
 
 export async function registerUser(username, password, email) {
+  let admin = false;
   try {
     const { data } = await axios.post("/api/users/register", {
       username,
       password,
       email,
+      admin,
     });
     return data;
   } catch (error) {
