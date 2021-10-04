@@ -255,48 +255,264 @@
     align-self: center;
     text-align: center;
   }
-  /* .Email {
-    align-items: flex-end;
-    justify-content: flex-end;
-    align-self: ;
-  } */
-  /* .container {
-    position: absolute;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* For general iPad layouts */
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"] {
+    font-size: 20px;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: #03e8fc;
+  }
+  a {
+    color: white;
+  }
+  .guides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .guidebutton {
+    height: 4em;
+    width: 95%;
+    font-size: 26px;
+  }
+  .appbody {
+    flex: 1 0 auto;
+  }
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-input {
+    width: 90%;
+    margin-top: 1em;
+    /* margin-bottom: 1em; */
+  }
+  .create {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    border: 1px solid black;
+    justify-content: center;
+    align-self: center;
+    width: 90%;
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 9rem;
+    background-color: #03e8fc;
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .codesheader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 6rem;
+    background-color: #03e8fc;
+    width: 100%;
+  }
+
+  .pagetwo {
+    margin-top: 250px;
+  }
+
+  .inputWithButtonTwo {
+    flex-direction: column;
+    width: 100%;
+    margin-left: -3px;
+    height: 215px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 250px;
+    margin: 10px;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  button {
+    height: 45px;
+    width: 75px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: #81cb2f;
+    border-radius: 18px;
+    border: 1px solid #000;
+    cursor: pointer;
+    color: #fff;
+    margin: 1em;
+  }
+  .hundred {
+    display: flex;
+    background-color: white;
+    margin-top: -10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .searchmobil {
+    border: 1px solid black;
+    /* margin-top: 5px; */
+    height: 40px;
+    width: 75%;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1em;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  .headerbutton {
+    display: flex;
+    align-items: space-evenly;
+    justify-content: space-evenly;
+    position: sticky;
+    top: -10;
+  }
+
+  .photo {
+    /* margin-top: 5px; */
+    height: 10%;
+    width: 10%;
+  }
+
+  .card {
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  .yellowcard {
+    background-color: yellow;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  .blankcard {
+    background-color: yellow;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: 10em;
+  }
+  .codes {
+    /* padding: 20px; */
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid black;
+    display: flex;
+    width: 100%;
+    position: fixed;
     bottom: 0;
-  } */
-  /* .footer {
-    display: grid;
-    height: 2.5rem;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas: "Phone Book Email";
-    justify-content: space-evenly;
-    align-content: space-between;
-    flex-shrink: 0;
-  } */
-  /* .Phone {
-    grid-area: Phone;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #03e8fc;
+    box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5);
+    height: 8em;
+  }
+
+  .phone {
     border: 1px solid black;
-    justify-content: space-evenly;
-    padding-left: 25px;
-    padding-right: 25px;
-    margin-right: 15px;
-  } */
-  /* .Book {
-    grid-area: Book;
+    width: 29%;
+    height: 6em;
+    font-size: 15px;
+    flex-wrap: wrap;
+    margin-left: 6%;
+    margin-bottom: 2em;
+  }
+
+  .phonetext {
+    align-self: center;
+    text-align: center;
+  }
+
+  .book {
     border: 1px solid black;
-    justify-content: space-evenly;
-    padding-left: 25px;
-    padding-right: 25px;
-    margin-left: 25px;
-  } */
-  /* .Email {
-    grid-area: Email;
+    width: 29%;
+    height: 6em;
+    font-size: 15px;
+    margin-left: -10%;
+    margin-right: -10%;
+    margin-bottom: 2em;
+  }
+
+  .booktext {
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+  }
+  .email {
     border: 1px solid black;
-    justify-content: space-evenly;
-    padding-left: 25px;
-    padding-right: 25px;
-    margin-left: 25px;
-  } */
+    /* width: rem; */
+    height: 5.5em;
+    font-size: 15px;
+    /* margin-right: 10%; */
+    margin-bottom: 2em;
+  }
+  .emailtext {
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+  }
 }
