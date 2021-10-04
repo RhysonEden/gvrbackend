@@ -24,8 +24,9 @@ const Register = () => {
   }, []);
 
   const handleRegis = (e) => {
+    let regiuser = user.toLowerCase();
     e.preventDefault();
-    registerUser(user, password, email);
+    registerUser(regiuser, password, email);
     cancelCourse();
   };
 
