@@ -68,9 +68,9 @@ function Login({ main, setMain }) {
           </button>
         </form>
       </div>
-      <div className="pagetwo">
+      {/* <div className="pagetwo">
         Need Access? E-Mail a Request Using the Button Below
-     </div>
+     </div> */}
 
       <div className="centerbutton">
         {/* <button className="newbutton" onClick={handleSubmit}>
