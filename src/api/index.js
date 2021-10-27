@@ -22,6 +22,24 @@ export async function getGVR(id) {
   }
 }
 
+export async function getGVRAdd(add) {
+  let head = config;
+  if (!head) {
+    let head = "Not Valid";
+    return head;
+  }
+  try {
+    let url = "api/gvrs/add/" + add;
+
+    const { data } = await axios.get(url, head);
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function loginUser(username, password) {
   try {
     const { data } = await axios.post("/api/users/login", {

@@ -24,6 +24,7 @@ function Login({ main, setMain }) {
   const cancelCourse = () => {
     setUsername("");
     setPassword("");
+    sessionStorage.setItem("searchbar", "true");
     window.location.reload();
   };
 
@@ -35,6 +36,7 @@ function Login({ main, setMain }) {
           alert.show("Invalid Username or Password");
         } else {
           // alert.show("Login Successfull");
+          // history.push("/");
           cancelCourse();
         }
       });

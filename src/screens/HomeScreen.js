@@ -10,13 +10,17 @@ const HomeScreen = ({ message, setMessage, warning }) => {
   } else {
     return (
       <div className="cardmaster">
+        {console.log(message)}
         {message.map((mess, index) => (
           <div className="card">
-            <div key={index}>{mess.gvrid}</div>
+            <div key={index} className="center">
+              {mess.gvrid}
+            </div>
+            <div className="center">{mess.address}</div>
             {mess.prov == true ? (
-              <div>Active with Guardian Connect</div>
+              <div className="centeractive">Active with Guardian Connect</div>
             ) : (
-              <div>Provisioned, but not Active</div>
+              <div className="centerinactive">Provisioned, but not Active</div>
             )}
           </div>
         ))}

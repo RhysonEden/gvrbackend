@@ -2,7 +2,7 @@ const apiRouter = require("express");
 const gvrRouter = apiRouter.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { getAllSites, searchGvrIds, getAllPets } = require("../db");
+const { getAllSites, searchGvrIds, searchGvrAdd } = require("../db");
 const SALT_COUNT = 10;
 
 gvrRouter.get("/", async (req, res, next) => {
@@ -34,6 +34,18 @@ gvrRouter.get("/:id", async (req, res, next) => {
   try {
     const gvr = await searchGvrIds(gvrId);
     res.send({ gvr });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+gvrRouter.get("/add/:id", async (req, res, next) => {
+  const gvrAdd = req.params.id;
+  console.log("GVR address", gvrAdd);
+  // console.log(req, "maybe?");
+  try {
+    const add = await searchGvrAdd(gvrAdd);
+    res.send({ add });
   } catch ({ name, message }) {
     next({ name, message });
   }

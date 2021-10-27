@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { getGVR } from "../api";
+import { getGVR, getGVRAdd } from "../api";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import icon180 from "../icon180.png";
 import { fetchThree, fetchFive } from "../api";
+import Checkbox from "./checkbox";
 const Header = ({
   searchInput,
   setSearchInput,
@@ -11,6 +12,7 @@ const Header = ({
   setWarning,
   value,
 }) => {
+  const [check, setCheck] = useState("no");
   const history = useHistory();
   const alert = useAlert();
   const handleTextChange = (e) => {
@@ -26,11 +28,24 @@ const Header = ({
   };
 
   const handleSubmit = (e) => {
-    if (searchInput.length === 0) {
-      return;
-    } else if (searchInput.length >= 7) {
-      console.log("Wrong");
+    // if (searchInput.length === 0) {
+    //   return;
+    // }
+
+    if (check.length === 4) {
+      getGVRAdd(searchInput).then((resp) => {
+        console.log(resp.add, "response");
+        if (resp.add.length === 0) {
+          setWarning("Nothing Found, Please Check the GVR ID and Try Again.");
+        } else {
+          setMessage(resp.add);
+          history.push("/");
+        }
+      });
     } else {
+      // } else if (searchInput.length >= 7) {
+      //   console.log("Wrong");
+      // } else {
       getGVR(searchInput).then((resp) => {
         console.log(resp.gvr.length, "response");
         if (resp.gvr.length === 0) {
@@ -65,7 +80,7 @@ const Header = ({
   return (
     <>
       <div className="header">
-        {console.log(barView)}
+        {/* {console.log(barView)} */}
         <div className="hundred">
           <img src={icon180} className="photo" />
           <input
@@ -78,6 +93,8 @@ const Header = ({
         </div>
         {barView === "true" ? (
           <>
+            <Checkbox check={check} setCheck={setCheck} />
+
             <div className="headerbutton">
               <button onClick={handleSubmit}>Submit</button>
             </div>
@@ -88,6 +105,8 @@ const Header = ({
           </>
         ) : (
           <>
+            <div className="checkbox"></div>
+
             <div className="headerbutton">
               <button onClick={handleSubmitTwo}>Submit</button>
             </div>
@@ -100,10 +119,8 @@ const Header = ({
         <div className="headerbutton">
           <button onClick={goHomeYouAreDrunk}>Home</button>
         </div>
+        {/* <Checkbox /> */}
       </div>
-      {/* <div className="headerbutton">
-        <button onClick={handleSubmit}>Submit</button>
-      </div> */}
     </>
   );
 };

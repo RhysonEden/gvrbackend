@@ -16,7 +16,14 @@ const {
 async function createTables() {
   try {
     await client.query(`
-              CREATE TABLE users (
+CREATE TABLE sites (
+  id SERIAL PRIMARY KEY,
+  gvrid varchar,
+  name varchar,
+  address varchar,
+  prov boolean
+);
+        CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username varchar UNIQUE NOT NULL,
   password varchar NOT NULL,
@@ -39,6 +46,8 @@ async function createTables() {
 // CREATE TABLE sites (
 //   id SERIAL PRIMARY KEY,
 //   gvrid varchar,
+//   name varchar,
+//   address varchar,
 //   prov boolean
 // );
 
@@ -51,10 +60,12 @@ async function createTables() {
 //   oname varchar NOT NULL,
 //   service varchar NOT NULL
 // );
+
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
+      DROP TABLE IF EXISTS sites;
       DROP TABLE IF EXISTS users;
       `);
 

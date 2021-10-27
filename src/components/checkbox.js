@@ -1,34 +1,22 @@
 import React from "react";
 
-export default function Checkbox({
-  disabled = false,
-  name,
-  label,
-  checked,
-  onChange,
-}) {
-  const handler = !disabled ? onChange : undefined;
+export default function Checkbox({ setCheck }) {
+  const handler = (e) => {
+    if (e.target.checked) {
+      setCheck("yeah");
+    } else if (!e.target.checked) {
+      setCheck("no");
+    }
+  };
 
   return (
     <>
-    <div className="create">
-      <span className="checkbox" onClick={handler}>
-        <input
-          className="checkbox-input"
-          type="checkbox"
-          name={name}
-          id={`${name}-id`}
-          disabled={disabled}
-          checked={checked}
-          onChange={handler}
-          area-labelledby="checkbox-label"
-        />
-        <span className="checkbox-indicator" />
-        <label className="checkbox-label" htmlFor={`${name}-id`}>
-          {label}
-        </label>
-      </span>
-    </div>
+      {/* <div className="create"> */}
+      <div className="checkbox" onClick={handler}>
+        <input className="checkbox-input" type="checkbox" onChange={handler} />
+        <div className="space">Check Box to Search By Address</div>
+      </div>
+      {/* </div> */}
     </>
   );
 }

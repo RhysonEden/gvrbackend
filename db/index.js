@@ -2,16 +2,16 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "techapp";
 
-// const client = new Client(
-//   `postgressql://postgres:james@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  `postgressql://postgres:james@localhost:5432/${DB_NAME}`
+);
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function createUser({ username, password, email, admin }) {
   try {
@@ -220,6 +220,20 @@ async function searchGvrIds(gvrId) {
   }
 }
 
+async function searchGvrAdd(address) {
+  try {
+    console.log("Searching For Address", address);
+    const { rows } = await client.query(`
+    SELECT *
+    FROM sites
+    WHERE address ILIKE '%${address}%'
+    `);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getAllSites,
   searchGvrIds,
@@ -233,5 +247,6 @@ module.exports = {
   searchCodesFive,
   searchCodesThree,
   getAdminByUsername,
+  searchGvrAdd,
   client,
 };
