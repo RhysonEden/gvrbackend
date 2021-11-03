@@ -3,7 +3,7 @@ import { getGVR, getGVRAdd } from "../api";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import icon180 from "../icon180.png";
-import { fetchThree, fetchFive } from "../api";
+import { fetchThree, fetchFive, fetchCr } from "../api";
 import Checkbox from "./checkbox";
 const Header = ({
   searchInput,
@@ -67,6 +67,10 @@ const Header = ({
       });
     } else if (disp === "300") {
       fetchThree(searchInput).then((resp) => {
+        setMessage(resp);
+      });
+    } else if (disp === "cr") {
+      fetchCr(searchInput).then((resp) => {
         setMessage(resp);
       });
     } else {

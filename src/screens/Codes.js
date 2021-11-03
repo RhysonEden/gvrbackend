@@ -5,6 +5,7 @@ const options = [
   { value: "300", label: "300" },
   { value: "500", label: "500" },
   { value: "700", label: "700" },
+  { value: "cr", label: "Card Reader" },
 ];
 
 const Codes = ({ searchInput, setValue, message }) => {

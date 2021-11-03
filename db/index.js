@@ -177,7 +177,7 @@ async function searchPetIds(id) {
 
 async function searchCodesThree(code) {
   try {
-    console.log("Searching For GVR #", code);
+    console.log("Searching For Code 3 #", code);
     const { rows } = await client.query(`
     SELECT *
     FROM codesthree
@@ -192,11 +192,26 @@ async function searchCodesThree(code) {
 
 async function searchCodesFive(code) {
   try {
-    console.log("Searching For GVR #", code);
+    console.log("Searching For Code 5 #", code);
     const { rows } = await client.query(`
     SELECT *
     FROM codesfive
     WHERE code ='${code}'
+    `);
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function searchCodesCr(code) {
+  try {
+    console.log("Searching For CODE #", code);
+    const { rows } = await client.query(`
+    SELECT *
+    FROM codescr
+    WHERE code LIKE '%${code}%'
     `);
     console.log(rows);
     return rows;
@@ -248,5 +263,6 @@ module.exports = {
   searchCodesThree,
   getAdminByUsername,
   searchGvrAdd,
+  searchCodesCr,
   client,
 };
