@@ -211,7 +211,7 @@ async function searchCodesCr(code) {
     const { rows } = await client.query(`
     SELECT *
     FROM codescr
-    WHERE code LIKE '%${code}%'
+    WHERE code ILIKE '%${code}%'
     `);
     console.log(rows);
     return rows;
